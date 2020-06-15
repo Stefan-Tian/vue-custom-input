@@ -1,6 +1,7 @@
 <template>
   <div class="container">
     <app-switch v-model="dataSwitch" :value="dataSwitch"></app-switch>
+    <FilterMixins></FilterMixins>
     <p v-highlight:background="'blue'">Color this</p>
     <p v-highlight:color.delay="'blue'">Color this</p>
     <p
@@ -11,13 +12,15 @@
 
 <script>
 import Switch from "./Switch.vue";
+import FilterMixins from "./FilterMixins.vue";
+
 export default {
   data() {
     return {
       dataSwitch: true
     };
   },
-  components: { "app-switch": Switch },
+  components: { "app-switch": Switch, FilterMixins },
   directives: {
     "local-highlight": {
       bind(el, binding, vnode) {

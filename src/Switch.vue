@@ -2,12 +2,19 @@
   <div>
     <div id="on" @click="switched(true)" :class="{active: value}">On</div>
     <div id="off" @click="switched(false)" :class="{active: !value}">Off</div>
+    <input type="text" v-model="filterText" />
+    <ul>
+      <li v-for="fruit in filteredFruits" :key="fruit">{{fruit}}</li>
+    </ul>
   </div>
 </template>
 
 <script>
+import fruitsMixin from "./fruitMixin";
+
 export default {
   props: ["value"],
+  mixins: [fruitsMixin],
   methods: {
     switched(isOn) {
       this.$emit("input", isOn);
